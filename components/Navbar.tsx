@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { RESUME_DATA } from '../constants';
-import { jsPDF } from 'jspdf';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,123 +36,13 @@ const Navbar: React.FC = () => {
   };
 
   const handleDownload = () => {
-    const doc = new jsPDF();
-
-    // Set font styles
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(24);
-    doc.text(RESUME_DATA.name.toUpperCase(), 105, 20, { align: "center" });
-
-    doc.setFontSize(10);
-    doc.setFont("helvetica", "normal");
-    const contactInfo = `${RESUME_DATA.contact.phone} | ${RESUME_DATA.contact.email} | ${RESUME_DATA.contact.location}`;
-    doc.text(contactInfo, 105, 28, { align: "center" });
-    doc.text(`LinkedIn: ${RESUME_DATA.contact.linkedin} | GitHub: ${RESUME_DATA.contact.github}`, 105, 33, { align: "center" });
-
-    // Helper for sections
-    let yPos = 45;
-    const addSectionTitle = (title: string) => {
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(12);
-      doc.text(title.toUpperCase(), 20, yPos);
-      doc.line(20, yPos + 2, 190, yPos + 2);
-      yPos += 10;
-    };
-
-    const checkPageBreak = (needed: number) => {
-      if (yPos + needed > 280) {
-        doc.addPage();
-        yPos = 20;
-      }
-    };
-
-    // Experience
-    addSectionTitle("Experience");
-    RESUME_DATA.experience.forEach((job) => {
-      checkPageBreak(30);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(11);
-      doc.text(`${job.role} - ${job.company}`, 20, yPos);
-
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(10);
-      doc.text(`${job.duration} | ${job.location}`, 190, yPos, { align: "right" });
-      yPos += 6;
-
-      job.description.forEach((desc) => {
-        const lines = doc.splitTextToSize(`• ${desc}`, 170);
-        checkPageBreak(lines.length * 5);
-        doc.text(lines, 20, yPos);
-        yPos += lines.length * 5;
-      });
-      yPos += 5;
-    });
-
-    // Skills
-    addSectionTitle("Skills");
-    RESUME_DATA.skills.forEach((skill) => {
-      checkPageBreak(10);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(10);
-      doc.text(`${skill.category}:`, 20, yPos);
-      doc.setFont("helvetica", "normal");
-      doc.text(skill.items.join(", "), 65, yPos);
-      yPos += 6;
-    });
-    yPos += 5;
-
-    // Projects
-    addSectionTitle("Projects");
-    RESUME_DATA.projects.forEach((proj) => {
-      checkPageBreak(25);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(11);
-      doc.text(proj.title, 20, yPos);
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "italic");
-      doc.text(proj.subtitle, 190, yPos, { align: "right" });
-      yPos += 5;
-
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(10);
-      const lines = doc.splitTextToSize(proj.description, 170);
-      doc.text(lines, 20, yPos);
-      yPos += lines.length * 5;
-
-      doc.setFontSize(9);
-      doc.setTextColor(100);
-      doc.text(`Tech: ${proj.techStack.join(", ")}`, 20, yPos);
-      doc.setTextColor(0);
-      yPos += 8;
-    });
-
-    // Education
-    addSectionTitle("Education");
-    RESUME_DATA.education.forEach((edu) => {
-      checkPageBreak(15);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(11);
-      doc.text(edu.institution, 20, yPos);
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(10);
-      doc.text(edu.year, 190, yPos, { align: "right" });
-      yPos += 5;
-      doc.text(edu.degree, 20, yPos);
-      yPos += 10;
-    });
-
-    // Achievements
-    addSectionTitle("Achievements");
-    RESUME_DATA.achievements.forEach((ach) => {
-      checkPageBreak(15);
-      const lines = doc.splitTextToSize(`• ${ach}`, 170);
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(10);
-      doc.text(lines, 20, yPos);
-      yPos += lines.length * 5;
-    });
-
-    doc.save("Rinkoo_Resume.pdf");
+    // Create a link and trigger download
+    const link = document.createElement('a');
+    link.href = '/resume/Rinkoo_Resume_26_11_2025.pdf';
+    link.download = 'Rinkoo_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const navLinks = [
