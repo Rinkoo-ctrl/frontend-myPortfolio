@@ -17,8 +17,8 @@ const Hero: React.FC = () => {
         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-200/20 dark:bg-blue-900/10 rounded-full blur-[100px] opacity-60 dark:opacity-40" />
       </div>
 
-      <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
+      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
         {/* Text Content */}
         <div className="space-y-8 order-2 lg:order-1 relative z-10">
           <motion.div
@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-wrap gap-4"
           >
-            <a 
+            <a
               href={`https://github.com/${RESUME_DATA.contact.github}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
               View Projects
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <button 
+            <button
               onClick={scrollToContact}
               className="px-8 py-4 glass-card text-slate-900 dark:text-white rounded-2xl font-semibold hover:bg-white/50 dark:hover:bg-white/10 transition-all duration-300 border border-slate-200 dark:border-white/10"
             >
@@ -79,42 +79,42 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative w-full h-full flex items-center justify-center"
           >
-             {/* Central Core */}
-             <div className="relative z-10 w-32 h-32 rounded-full bg-gradient-to-br from-primary-500 to-blue-600 dark:from-primary-500 dark:to-blue-600 shadow-2xl shadow-primary-500/50 dark:shadow-primary-500/50 flex items-center justify-center animate-pulse transition-colors duration-500">
-                <Server size={48} className="text-white" />
-             </div>
+            {/* Central Core */}
+            <div className="relative z-10 w-32 h-32 rounded-full bg-gradient-to-br from-primary-500 to-blue-600 dark:from-primary-500 dark:to-blue-600 shadow-2xl shadow-primary-500/50 dark:shadow-primary-500/50 flex items-center justify-center animate-pulse transition-colors duration-500">
+              <Server size={48} className="text-white" />
+            </div>
 
-             {/* Orbiting Elements - Ring 1 */}
-             <div className="absolute border border-slate-200 dark:border-gray-700 rounded-full w-[280px] h-[280px] animate-spin-slow transition-colors">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center transform rotate-0">
-                   <Database size={20} className="text-primary-500" />
-                </div>
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center">
-                   <Globe size={20} className="text-blue-500" />
-                </div>
-             </div>
+            {/* Orbiting Elements - Ring 1 */}
+            <div className="absolute border border-slate-200 dark:border-gray-700 rounded-full w-[280px] h-[280px] animate-spin-slow transition-colors">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center transform rotate-0">
+                <Database size={20} className="text-primary-500" />
+              </div>
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-10 h-10 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center">
+                <Globe size={20} className="text-blue-500" />
+              </div>
+            </div>
 
-             {/* Orbiting Elements - Ring 2 */}
-             <div className="absolute border border-dashed border-slate-300 dark:border-gray-600 rounded-full w-[450px] h-[450px] animate-reverse-spin transition-colors">
-                 <div className="absolute top-1/2 -right-4 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center">
-                   <Github size={24} className="text-slate-800 dark:text-white" />
-                </div>
-                <div className="absolute top-1/2 -left-4 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center">
-                   <span className="font-mono text-xs font-bold text-orange-500">AWS</span>
-                </div>
-             </div>
-             
-             {/* Floating Particles */}
-             <motion.div 
-               className="absolute top-20 right-20 w-3 h-3 bg-primary-400 dark:bg-primary-400 rounded-full blur-[1px]"
-               animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5] }}
-               transition={{ duration: 4, repeat: Infinity }}
-             />
-             <motion.div 
-               className="absolute bottom-20 left-20 w-4 h-4 bg-blue-400 rounded-full blur-[1px]"
-               animate={{ y: [0, 20, 0], opacity: [0.5, 1, 0.5] }}
-               transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-             />
+            {/* Orbiting Elements - Ring 2 */}
+            <div className="absolute border border-dashed border-slate-300 dark:border-gray-600 rounded-full w-[450px] h-[450px] animate-reverse-spin transition-colors">
+              <div className="absolute top-1/2 -right-4 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center">
+                <Github size={24} className="text-slate-800 dark:text-white" />
+              </div>
+              <div className="absolute top-1/2 -left-4 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 flex items-center justify-center">
+                <span className="font-mono text-xs font-bold text-orange-500">AWS</span>
+              </div>
+            </div>
+
+            {/* Floating Particles */}
+            <motion.div
+              className="absolute top-20 right-20 w-3 h-3 bg-primary-400 dark:bg-primary-400 rounded-full blur-[1px]"
+              animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            />
+            <motion.div
+              className="absolute bottom-20 left-20 w-4 h-4 bg-blue-400 rounded-full blur-[1px]"
+              animate={{ y: [0, 20, 0], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+            />
 
           </motion.div>
         </div>
