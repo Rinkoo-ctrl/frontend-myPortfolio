@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
 
   const scrollToSection = (id: string) => {
     setIsOpen(false);
-    
+
     // Small timeout to allow the mobile menu to begin closing
     setTimeout(() => {
       const element = document.getElementById(id);
@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
         const headerOffset = 85;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
-    
+
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth"
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
 
   const handleDownload = () => {
     const doc = new jsPDF();
-    
+
     // Set font styles
     doc.setFont("helvetica", "bold");
     doc.setFontSize(24);
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
       doc.setFont("helvetica", "bold");
       doc.setFontSize(11);
       doc.text(`${job.role} - ${job.company}`, 20, yPos);
-      
+
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
       doc.text(`${job.duration} | ${job.location}`, 190, yPos, { align: "right" });
@@ -113,13 +113,13 @@ const Navbar: React.FC = () => {
       doc.setFont("helvetica", "italic");
       doc.text(proj.subtitle, 190, yPos, { align: "right" });
       yPos += 5;
-      
+
       doc.setFont("helvetica", "normal");
       doc.setFontSize(10);
       const lines = doc.splitTextToSize(proj.description, 170);
       doc.text(lines, 20, yPos);
       yPos += lines.length * 5;
-      
+
       doc.setFontSize(9);
       doc.setTextColor(100);
       doc.text(`Tech: ${proj.techStack.join(", ")}`, 20, yPos);
@@ -167,7 +167,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-card shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-bold font-display tracking-tighter text-gray-900 dark:text-white cursor-pointer"
@@ -179,8 +179,8 @@ const Navbar: React.FC = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link, idx) => (
-            <button 
-              key={idx} 
+            <button
+              key={idx}
               onClick={() => scrollToSection(link.id)}
               className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
@@ -219,15 +219,15 @@ const Navbar: React.FC = () => {
           >
             <div className="flex flex-col p-6 gap-4">
               {navLinks.map((link, idx) => (
-                <button 
-                  key={idx} 
+                <button
+                  key={idx}
                   onClick={() => scrollToSection(link.id)}
                   className="text-lg font-medium text-gray-800 dark:text-gray-200 text-left w-full py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
                   {link.name}
                 </button>
               ))}
-               <button
+              <button
                 onClick={handleDownload}
                 className="flex items-center justify-center gap-2 px-5 py-3 bg-primary-600 text-white rounded-xl font-semibold mt-2"
               >
